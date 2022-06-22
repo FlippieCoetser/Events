@@ -3,9 +3,6 @@ const path = require("path");
 module.exports = function(config) {
     config.set({
         frameworks: ["jasmine"],
-        proxies: {
-            '/lib/css/': '/base/lib/css'
-        },
         files: [
             { pattern: "./src/**/*.js", type: "module" },
             { pattern: "./node_modules/@browser-modules/typescript.dictionary/lib/dictionary.js", type: "module" },
