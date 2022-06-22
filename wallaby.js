@@ -3,7 +3,8 @@
 module.exports = function(wallaby) {
     return {
         files: [
-            "src/**/*.ts"
+            "src/**/*.ts",
+            "node_modules/@browser-modules/typescript.dictionary/lib/dictionary.js"
         ],
         tests: [
             "test/*.ts"
