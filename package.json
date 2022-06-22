@@ -2,10 +2,11 @@
   "name": "@browser-modules/typescript.events",
   "version": "1.0.1",
   "description": "Typescript Events complied to ES6 modules",
-  "browser": "lib/Events.js",
+  "browser": "lib/events.js",
+  "main": "lib/events.js",
   "files": [
     "lib/",
-    "tasks/"	
+    "tasks/"
   ],
   "scripts": {
     "clean.test": "node ./tasks/clean.test.mjs",
@@ -46,5 +47,8 @@
     "typedoc-plugin-merge-modules": "^3.1.0",
     "typedoc-plugin-mermaid": "^1.8.0",
     "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "@browser-modules/typescript.dictionary": "^1.0.4"
   }
 }
