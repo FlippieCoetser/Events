@@ -4,16 +4,16 @@
         "module": "es2020",
         "target": "es2020",
         "sourceMap": true,
-        "inlineSources": true
+        "inlineSources": true,
+        "paths": {
+            "dictionary": ["../node_modules/@browser-modules/typescript.dictionary/lib/dictionary.js"]
+        }
     },
     "include": [
         "../src/**/*",
         "../test/**/*"
     ],
     "typedocOptions" :{
-        "entryPoints": [
-            "../src/Calculator.ts"	
-        ],
         "excludePrivate": true,
         "excludeProtected": true,
         "disableSources": true,
