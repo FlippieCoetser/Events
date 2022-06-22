@@ -8,6 +8,7 @@ module.exports = function(config) {
         },
         files: [
             { pattern: "./src/**/*.js", type: "module" },
+            { pattern: "./node_modules/@browser-modules/typescript.dictionary/lib/dictionary.js", type: "module" },
             { pattern: "./test/**/*.js", type: "module" },
             { pattern: "./lib/css/*.css", type: 'css'}
         ],
