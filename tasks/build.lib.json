@@ -7,7 +7,7 @@
         "rootDir": "../src",
         "outDir": "../lib/",
         "paths": {
-            "calculator": ["../src/Calculator.js"]
+            "dictionary": ["../node_modules/@browser-modules/typescript.dictionary/lib/dictionary.js"]
         }
     },
     "include": [
