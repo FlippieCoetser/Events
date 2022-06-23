@@ -1,6 +1,6 @@
 {
   "name": "@browser-modules/typescript.events",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Typescript Events complied to ES6 modules",
   "browser": "lib/events.js",
   "main": "lib/events.js",
