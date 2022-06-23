@@ -10,83 +10,79 @@ export class Event {
     public static defaultMaxListeners: number = 10;
     private _Events = new Dictionary<Listeners>();
     private _maxListeners: number = 10;
-    public addListener(eventName: string, listener): Event {
-        return this.on(eventName, listener);
-    }
-    public on(eventName: string, listener: Listener): Event {
+    public addListener = (eventName: string, listener): Event => 
+        this.on(eventName, listener);
+    
+    public off = (eventName: string, listener: Listener): Event => 
+        this.removeListener(eventName, listener);
+    
+    public on = (eventName: string, listener: Listener): Event => 
         this._registerEvent(eventName, listener, false);
-        return this;
-    }
-    public once(eventName: string, listener: Listener): Event {
+ 
+    public once = (eventName: string, listener: Listener): Event => 
         this._registerEvent(eventName, listener, true);
-        return this;
+
+    private _invokeListeners = (listeners, ...args) => 
+        listeners && listeners.forEach(listener => listener(...args))
+
+    public emit = (eventName: string, ...args): boolean => {
+        this._invokeListeners(this._Events.get(eventName), ...args)
+        return this.listenerCount(eventName) === 0 ? false : true;
     }
-    public emit(eventName: string, ...args): boolean {
-        let listeners = this._Events.get(eventName);
-        let listenerCount = this.listenerCount(eventName);
-        if (listeners) {
-            listeners.map(listener => listener(...args));
-        }
-        return listenerCount === 0 ? false : true;
-    }
-    public eventNames(): string[] {
-        return this._Events.keys();
-    }
-    public getMaxListeners(): number {
-        return this._maxListeners === null ? Event.defaultMaxListeners : this._maxListeners;
-    }
-    public setMaxListeners(limit: number): Event {
+    public eventNames = (): string[] => this._Events.keys();
+    
+    public getMaxListeners = (): number => 
+        this._maxListeners === null ? Event.defaultMaxListeners : this._maxListeners;
+        
+    public setMaxListeners = (limit: number): Event => {
         this._maxListeners = limit;
         return this;
     }
-    public listeners(eventName: string) {
-        return this._Events.get(eventName);
-    }
-    public listenerCount(eventName: string): number {
-        let event = this._Events.get(eventName);
-        return event === undefined ? 0 : event.length;
-    }
-    public removeAllListeners(eventNames?: Array<string>): Event {
-        if (!eventNames) {
-            eventNames = this._Events.keys();
-        }
-        eventNames.forEach(eventName => this._Events.remove(eventName));
+    public listeners = (eventName: string) => this._Events.get(eventName);
+    
+    public listenerCount = (eventName: string): number => 
+        this._Events.get(eventName) ? this._Events.get(eventName).length : 0  
+    
+    public removeAllListeners = (eventNames?: Array<string>): Event => {
+        eventNames = eventNames ? eventNames : this._Events.keys()
+        this.removeListeners(eventNames)
         return this;
     }
-    public removeListener(eventName: string, listener: Listener): Event {
+    public removeListeners = (eventNames: Array<string>) => 
+        eventNames.forEach(eventName => this._Events.remove(eventName));
+
+    public removeListener = (eventName: string, listener: Listener): Event => {
             let listeners = this.listeners(eventName).filter( item => item === listener);
             this._Events.add(eventName, listeners);
         return this;
     }
-    private _registerEvent(eventName: string, listener: Listener, type: boolean): void {
-        if (this._ListenerLimitReached(eventName)) {
-            console.log("Maximum listener reached, new Listener not added");
-            return;
+
+    private _registerEvent = (eventName: string, listener: Listener, type: boolean): Event => {
+        let limitReached = this._ListenerLimitReached(eventName)
+        if (limitReached) {
+            console.log("Maximum listener reached, new Listener not added")
+            return this
         }
-        if (type === true) {
-            listener = this._createOnceListener(listener, eventName);
-        }
-        let listeners = this._createListeners(listener, this.listeners(eventName));
-        this._Events.add(eventName, listeners);
-        return;
+                
+        listener = type ? this._createOnceListener(listener, eventName) : listener
+        
+        let listeners = this._createListeners(listener, this.listeners(eventName))
+        this._Events.add(eventName, listeners)
+        return this
     }
-    private _createListeners(listener: Listener, listeners?: Listeners): Listeners {
-        if (!listeners) {
-            listeners = new Array<Listener>();
-        }
+    private _createListeners = (listener: Listener, listeners?: Listeners): Listeners => {
+        listeners = listeners ? listeners:  (listeners = new Array<Listener>())
         listeners.push(listener);
         return listeners;
     }
-    private _createOnceListener(listener: Listener, eventName: string): Listener {
-        let newListener = (...args) => {
+    private _createOnceListener = (listener: Listener, eventName: string): Listener => 
+        (...args) => {
             this.removeListener(eventName, listener);
             return listener(...args);
         };
-        return newListener;
-    }
-    private _ListenerLimitReached(eventName: string): boolean {
-        return this.listenerCount(eventName) === this.getMaxListeners() ? true : false;
-    }
+    
+    private _ListenerLimitReached = (eventName: string): boolean => 
+        this.listenerCount(eventName) === this.getMaxListeners() ? true : false;
 }
 
 export default Event;
