@@ -23,7 +23,7 @@ describe("Given: Event", () => {
         let event = new Event();
         expect(event.setMaxListeners(5) instanceof Event).toBe(true);
     });
-    it("When listeners(eventName) after on(eventName, Listener) then listernerCount should eql ++ previous listernerCount", () => {
+    it("When listeners(eventName) after on(eventName, Listener) then listenerCount should eql ++ previous listenerCount", () => {
         let event = new Event();
         let listener = jasmine.createSpy('spy');
         let eventName = "eventName";
@@ -32,7 +32,7 @@ describe("Given: Event", () => {
         expect(event.listenerCount(eventName)).toBe(1);
     });
     describe("Given: on(eventName, listener)", () => {
-        it("When calling listeners(eventName) then listners[0] should eql listener", () => {
+        it("When calling listeners(eventName) then listeners[0] should eql listener", () => {
             let event = new Event();
             let listener = jasmine.createSpy('spy');
             let eventName = "eventName";
@@ -84,7 +84,7 @@ describe("Given: Event", () => {
             event.on(eventName, listener);
             expect(event.eventNames()).toEqual([eventName]);
         });
-        it("When listeners(eventName) then listners should eql [listener]", () => {
+        it("When listeners(eventName) then listeners should eql [listener]", () => {
             let event = new Event();
             let listener = jasmine.createSpy('spy');
             let eventName = "eventName";
@@ -100,7 +100,7 @@ describe("Given: Event", () => {
             event.removeAllListeners();
             expect(event.eventNames().length).toBe(0);
         });
-        it("When removeAllListeners([eventName]) then listners should not contain eventName", () => {
+        it("When removeAllListeners([eventName]) then listeners should not contain eventName", () => {
             let event = new Event();
             let listener = jasmine.createSpy('spy');
             let listener2 = jasmine.createSpy('spy');
@@ -113,7 +113,7 @@ describe("Given: Event", () => {
             expect(event.eventNames().length).toBe(1);
         });
         describe("Given: on(eventName1, listener)", () => {
-            it("When removeListener(eventName, listener) then listnerCount(eventName) should eql 1", () => {
+            it("When removeListener(eventName, listener) then listenerCount(eventName) should eql 1", () => {
                 let event = new Event();
                 let listenerOne = jasmine.createSpy('spy');
                 let listenerTwo = jasmine.createSpy('spy');
@@ -122,6 +122,17 @@ describe("Given: Event", () => {
                 event.on(eventName, listenerTwo);
                 expect(event.listenerCount(eventName)).toBe(2);
                 event.removeListener(eventName, listenerOne);
+                expect(event.listenerCount(eventName)).toBe(1);
+            });
+            it("When off(eventName, listener) then listenerCount(eventName) should eql 1", () => {
+                let event = new Event();
+                let listenerOne = jasmine.createSpy('spy');
+                let listenerTwo = jasmine.createSpy('spy');
+                let eventName = "eventName";
+                event.on(eventName, listenerOne);
+                event.on(eventName, listenerTwo);
+                expect(event.listenerCount(eventName)).toBe(2);
+                event.off(eventName, listenerOne);
                 expect(event.listenerCount(eventName)).toBe(1);
             });
             it("When removeAllListeners([eventNames]) then event.eventNames should eql 0", () => {
