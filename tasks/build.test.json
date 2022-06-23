@@ -19,7 +19,7 @@
         "disableSources": true,
         "categorizeByGroup": false,
         "sort": ["static-first", "visibility"],
-        "name" : "Boilerplate",
+        "name" : "ES Module",
         "hideGenerator": true,
         "mergeModulesMergeMode": "module"
     }
