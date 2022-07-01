@@ -1,0 +1,17 @@
+{
+    "_comments": "ES2020 adds support for dynamic imports and import.meta",
+    "compilerOptions": {
+        "module": "es2020",
+        "target": "es2020",
+        "sourceMap": true,
+        "inlineSources": true,
+        "baseUrl": ".",
+        "paths": {
+            "dictionary": ["./node_modules/@browser-modules/typescript.dictionary/lib/dictionary"]
+        }
+    },
+    "include": [
+        "./src/**/*",
+        "./test/**/*"
+    ]
+}

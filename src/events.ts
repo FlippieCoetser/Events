@@ -1,4 +1,4 @@
-import { Dictionary } from "../node_modules/@browser-modules/typescript.dictionary/lib/dictionary.js";
+import { Dictionary } from "dictionary";
 
 export interface Listener {
     (...arg): void;
