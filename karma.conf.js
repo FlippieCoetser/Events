@@ -35,6 +35,7 @@ module.exports = function(config) {
             skipFilesWithNoCoverage: true
         },
         browsers: ["ChromeHeadless"],
-        singleRun: true
+        singleRun: true,
+        logLevel: config.LOG_DISABLE
     });
 };
