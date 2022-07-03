@@ -1,5 +1,5 @@
 {
-  "name": "@browser-modules/typescript.events",
+  "name": "@browser-modules/events",
   "version": "1.0.2",
   "description": "Typescript Events complied to ES6 modules",
   "browser": "lib/events.js",
@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FlippieCoetser/typescript.events.git"
+    "url": "git+https://github.com/FlippieCoetser/events.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/FlippieCoetser/typescript.events/issues"
+    "url": "https://github.com/FlippieCoetser/events/issues"
   },
-  "homepage": "https://github.com/FlippieCoetser/typescript.events#readme",
+  "homepage": "https://github.com/FlippieCoetser/events#readme",
   "devDependencies": {
     "@knodes/typedoc-plugin-pages": "^0.22.5",
     "@types/jasmine": "^4.0.3",
@@ -49,6 +49,6 @@
     "typescript": "^4.7.2"
   },
   "dependencies": {
-    "@browser-modules/typescript.dictionary": "^1.0.4"
+    "@browser-modules/dictionary": "^1.0.6"
   }
 }

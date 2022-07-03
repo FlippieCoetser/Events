@@ -7,7 +7,7 @@
         "rootDir": "../src",
         "outDir": "../lib/",
         "paths": {
-            "dictionary": ["../node_modules/@browser-modules/typescript.dictionary/lib/dictionary.js"]
+            "@browser-modules/dictionary": ["../node_modules/@browser-modules/dictionary/lib/dictionary.js"]
         }
     },
     "include": [
