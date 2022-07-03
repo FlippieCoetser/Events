@@ -49,6 +49,6 @@
     "typescript": "^4.7.2"
   },
   "dependencies": {
-    "@browser-modules/dictionary": "^1.0.6"
+    "@browser-modules/dictionary": "^1.0.7"
   }
 }
