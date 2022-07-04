@@ -8,8 +8,7 @@ module.exports = function(wallaby) {
         tests: [
             "test/*.ts"
         ],
-        filesWithNoCoverageCalculated: ['node_modules/@browser-modules/dictionary/lib/dictionary.js'],
-        trace: true,  
+        filesWithNoCoverageCalculated: ['node_modules/@browser-modules/dictionary/lib/dictionary.js'], 
         compilers: {
             '**/*.ts': wallaby.compilers.typeScript({
                 "module": "es2020",
