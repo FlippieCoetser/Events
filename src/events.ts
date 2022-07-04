@@ -1,5 +1,4 @@
 import { Dictionary } from "@browser-modules/dictionary";
-// for wallaby use the full path: "../node_modules/@browser-modules/dictionary/lib/dictionary.js" 
 
 export interface Listener {
     (...arg): void;
