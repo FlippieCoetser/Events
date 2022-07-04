@@ -4,13 +4,13 @@
         "module": "es2020",
         "target": "es2020",
         "declaration": true,
-        "rootDir": "../src",
-        "outDir": "../lib/",
+        "rootDir": "./src",
+        "outDir": "./lib/",
         "paths": {
-            "@browser-modules/dictionary": ["../node_modules/@browser-modules/dictionary/lib/dictionary.js"]
+            "@browser-modules/dictionary": ["./node_modules/@browser-modules/dictionary/lib/dictionary.js"]
         }
     },
     "include": [
-        "../src/**/*"
+        "./src/**/*"
     ]
 }
