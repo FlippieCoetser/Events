@@ -9,7 +9,7 @@ export type Listeners = Array<Listener>;
 export class Event {
     public static defaultMaxListeners: number = 10;
     private _Events = new Dictionary<Listeners>();
-    private _maxListeners: number = 10;
+    private _maxListeners;
     public addListener = (eventName: string, listener): Event => 
         this.on(eventName, listener);
     
@@ -18,7 +18,7 @@ export class Event {
     
     public on = (eventName: string, listener: Listener): Event => 
         this._registerEvent(eventName, listener, false);
- 
+
     public once = (eventName: string, listener: Listener): Event => 
         this._registerEvent(eventName, listener, true);
 
@@ -32,7 +32,7 @@ export class Event {
     public eventNames = (): string[] => this._Events.keys();
     
     public getMaxListeners = (): number => 
-        this._maxListeners === null ? Event.defaultMaxListeners : this._maxListeners;
+        !this._maxListeners ? Event.defaultMaxListeners : this._maxListeners;
         
     public setMaxListeners = (limit: number): Event => {
         this._maxListeners = limit;
