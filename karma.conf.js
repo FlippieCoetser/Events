@@ -7,11 +7,11 @@ module.exports = function(config) {
             '/node_modules/': '/base/node_modules/'
         },
         files: [
+            { pattern: "importmap.js"},
             { pattern: "./src/**/*.js", type: "module" },
             { pattern: "./node_modules/@browser-modules/dictionary/lib/dictionary.js", type: "module" },
             { pattern: "./test/**/*.js", type: "module" }
         ],
-        customContextFile: "tasks/custom.context.html",
         preprocessors: {
             "src/**/!(*.test).js": ["karma-coverage-istanbul-instrumenter"]
         },
