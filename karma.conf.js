@@ -15,17 +15,7 @@ module.exports = function(config) {
         preprocessors: {
             "src/**/!(*.test).js": ["karma-coverage-istanbul-instrumenter"]
         },
-        reporters: ["spec","junit", "coverage-istanbul"],
-        junitReporter: {
-            outputDir: './output',
-            outputFile: undefined, 
-            suite: '', 
-            useBrowserName: false, 
-            nameFormatter: undefined,
-            classNameFormatter: undefined, 
-            properties: {}, 
-            xmlVersion: null 
-        },
+        reporters: ["spec", "coverage-istanbul"],
         coverageIstanbulInstrumenter: {
             esModules: true
         },
