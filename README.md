@@ -1,6 +1,8 @@
 # Events
 Implementation of a Node.Events in Typescript compiled to an ES6 Browser Module
 
+[API Documentation](https://flippiecoetser.github.io/Events/)
+
 ### Example
 Open `./demo/index.html` by **right-click** on file in VS Code and select: **Open with Live Server**.  
 The console output in chrome developer tools should display: `event emitted: eventIdentifier`.  
