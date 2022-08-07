@@ -1,4 +1,7 @@
 import { Event } from '@browser-modules/events';
-let event = new Event()
 
-console.log('Index.js loaded')
+class Emitter extends Event {}
+const emitter = new Emitter()
+
+emitter.on('event', event => console.log(`event emitted: ${event}`))
+emitter.emit('event','eventIdentifier')
