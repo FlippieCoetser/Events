@@ -14,12 +14,13 @@
         "./test/**/*"
     ],
     "typedocOptions" :{
+        "entryPoints": ["./src/events.ts"],
         "excludePrivate": true,
         "excludeProtected": true,
         "disableSources": true,
         "categorizeByGroup": false,
         "sort": ["static-first", "visibility"],
-        "name" : "ES Module",
+        "name" : "Events",
         "hideGenerator": true,
         "mergeModulesMergeMode": "module"
     }
