@@ -1,7 +1,7 @@
 {
   "name": "@browser-modules/events",
-  "version": "1.0.5",
-  "description": "Typescript Events complied to ES6 modules",
+  "version": "1.1.0",
+  "description": "Implementation of Node.Event in Typescript compiled as ES6 Browser Module",
   "browser": "lib/events.js",
   "main": "lib/events.js",
   "files": [
@@ -16,7 +16,7 @@
     "test": "karma start",
     "posttest": "npm run clean.test",
     "build.lib": "npm run clean.lib && tsc -p build.lib.json",
-    "document": "npx typedoc --tsconfig build.test.json --entryPoints ./src/events.ts",
+    "document": "npx typedoc --tsconfig build.test.json",
     "prestart": "npm run build.lib",
     "start": "http-server -a 127.0.0.1 -o /demo",
     "postinstall": "node ./tasks/injectImportmap.mjs"
